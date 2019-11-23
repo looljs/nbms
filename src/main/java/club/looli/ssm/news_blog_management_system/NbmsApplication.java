@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * 新闻博客管理系统
+ * 新闻管理系统
  */
 @SpringBootApplication
 public class NbmsApplication {
