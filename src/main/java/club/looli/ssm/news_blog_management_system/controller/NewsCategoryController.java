@@ -164,5 +164,12 @@ public class NewsCategoryController {
         return categoryService.findList();
     }
 
+    @RequestMapping(value = "/list2",method = RequestMethod.POST)
+    @ResponseBody
+    public List<NewsCategory> list2(){
+        List<NewsCategory> all = categoryService.findList();
+        all.add(0,new NewsCategory(-1,"全部"));
+        return all;
+    }
 
 }

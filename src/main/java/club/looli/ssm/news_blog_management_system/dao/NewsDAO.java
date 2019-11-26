@@ -35,6 +35,9 @@ public interface NewsDAO {
             "<if test='author != null'>",
             " and author like #{author} ",
             "</if>",
+            "<if test='categoryId != null'>",
+            " and categoryId = #{categoryId} ",
+            "</if>",
             "</where>",
             " order by createTime desc limit #{start},#{size} ",
             "</script>"
@@ -57,6 +60,9 @@ public interface NewsDAO {
             "<if test='author != null'>",
             "and author like #{author} ",
             "</if>",
+            "<if test='categoryId != null'>",
+            " and categoryId = #{categoryId} ",
+            "</if>",
             "</where>",
             "</script>"
     })
@@ -76,7 +82,7 @@ public interface NewsDAO {
      * @param news
      * @return
      */
-    @Update("update news set title=#{title},categoryId=#{categoryId},tags=#{tags},summary=#{summary},photo=#{photo},author=#{author},content=#{content},pageViews=#{pageViews},commentVolume=#{commentVolume} where id = #{id}")
+    @Update("update news set title=#{title},categoryId=#{categoryId},tags=#{tags},summary=#{summary},photo=#{photo},author=#{author},content=#{content} where id = #{id}")
     int edit(News news);
 
     /**
@@ -86,4 +92,7 @@ public interface NewsDAO {
      */
     @Delete("delete from news where id = #{id}")
     int delete(Integer id);
+
+    @Select("select id,title,categoryId,tags,summary,photo,author,content,pageViews,commentVolume,createTime from news where id = #{id}")
+    News findById(Integer id);
 }

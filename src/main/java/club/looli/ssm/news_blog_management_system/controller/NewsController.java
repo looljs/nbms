@@ -3,7 +3,9 @@ package club.looli.ssm.news_blog_management_system.controller;
 
 import club.looli.ssm.news_blog_management_system.entity.Menu;
 import club.looli.ssm.news_blog_management_system.entity.News;
+import club.looli.ssm.news_blog_management_system.entity.NewsCategory;
 import club.looli.ssm.news_blog_management_system.page.Page;
+import club.looli.ssm.news_blog_management_system.service.NewsCategoryService;
 import club.looli.ssm.news_blog_management_system.service.NewsService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,17 +71,24 @@ public class NewsController {
     public Map<String,Object> menuList(
             Page page,
             @RequestParam(name = "author",defaultValue = "",required = false) String author,
-            @RequestParam(name = "title",defaultValue = "",required = false) String title
+            @RequestParam(name = "title",defaultValue = "",required = false) String title,
+            @RequestParam(name = "categoryId",defaultValue = "",required = false) String categoryId
     ){
         Map<String,Object> map = new HashMap<>();
         Map<String,Object> search = new HashMap<>();
 
+        if (categoryId.equals("") || "-1".equals(categoryId)){
+            categoryId = null;
+        }
         search.put("start",page.getStart());
         search.put("size",page.getRows());
         search.put("author","%"+author.trim()+"%");
         search.put("title","%"+title.trim()+"%");
+        search.put("categoryId",categoryId);
         int count = newsService.findCount(search);
         List<News> data = newsService.findAllBySearch(search);
+
+
 
         map.put("type","success");
         map.put("rows",data);
@@ -150,6 +159,17 @@ public class NewsController {
     }
 
     /**
+     * 跳转修改新闻页面
+     * @param id 新闻id
+     * @return
+     */
+    @RequestMapping(value = "/toEdit",method = RequestMethod.GET)
+    public ModelAndView toEdit(@RequestParam("id") Integer id,ModelAndView modelAndView){
+        modelAndView.addObject("news",newsService.findById(id));
+        modelAndView.setViewName("news/news_edit");
+        return modelAndView;
+    }
+    /**
      * 修改新闻
      * @param news 新闻信息
      * @return
@@ -166,7 +186,7 @@ public class NewsController {
         //修改
         newsService.edit(news);
         map.put("type","success");
-        map.put("msg","添加成功");
+        map.put("msg","修改成功");
         return map;
     }
 

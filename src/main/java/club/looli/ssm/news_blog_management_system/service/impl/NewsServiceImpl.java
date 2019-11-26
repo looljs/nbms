@@ -4,7 +4,6 @@ import club.looli.ssm.news_blog_management_system.dao.NewsDAO;
 import club.looli.ssm.news_blog_management_system.entity.News;
 import club.looli.ssm.news_blog_management_system.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -42,5 +41,10 @@ public class NewsServiceImpl implements NewsService {
     @Override
     public int delete(Integer id) {
         return newsDAO.delete(id);
+    }
+
+    @Override
+    public News findById(Integer id) {
+        return newsDAO.findById(id);
     }
 }

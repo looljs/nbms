@@ -23,9 +23,7 @@
             <label>新闻标题:</label><input id="search-title" class="wu-text" style="width:100px">
             <label>新闻作者:</label><input id="search-author" class="wu-text" style="width:100px">
             <label>所属分类:</label>
-            <select id="search-category" class="easyui-combobox" panelHeight="auto" style="width:120px">
-                <option value="-1">全部</option>
-            </select>
+            <input class="easyui-combobox" id="search-category" panelHeight="auto" style="width:120px;" name="roleId">
             <a href="#" id="search-btn" class="easyui-linkbutton" iconCls="icon-search">搜索</a>
         </div>
     </div>
@@ -56,7 +54,7 @@
                     type:'post',
                     data:{id:item[0].id},
                     success:function(data){
-                        if(data.type == 'success'){
+                        if(data.type === 'success'){
                             $.messager.alert('信息提示','删除成功！','info');
                             $('#data-datagrid').datagrid('reload');
                         }else{
@@ -84,7 +82,7 @@
             $.messager.alert('信息提示','请选择要修改的数据！','info');
             return;
         }
-        window.location.href = 'edit?id=' + item.id;
+        window.location.href = 'toEdit?id=' + item.id;
     }
 
 
@@ -93,6 +91,8 @@
         var option = {title:$("#search-title").val(),categoryId:$("#search-category").combobox('getValue'),author:$("#search-author").val()};
         $('#data-datagrid').datagrid('reload',option);
     });
+
+    var categoryList;
 
     /**
      * 载入数据
@@ -106,24 +106,45 @@
         multiSort:true,
         fitColumns:true,
         idField:'id',
-        // treeField:'name',
         remoteSort: false,
         striped: true,
-        // fit:true,
         selectOnCheck: true,
-        columns:[[
+        columns:[
+            [
             { field:'chk',checkbox:true},
             { field:'title',title:'标题',width:300,formatter:function(value,row,index){
                     return '<a href="../../news/detail?id='+row.id+'" target="_blank">' + value + '</a>';
                 }},
-             // { field:'categoryId',title:'分类',width:80,formatter:function(value,row,index){
-             //         return row.newsCategory.name;
-             //     }},
+             { field:'categoryId',title:'分类',width:80,formatter:function(value,row,index){
+                     for(var i=0;i<categoryList.length;i++){
+                         if(value === categoryList[i].id)return categoryList[i].name;
+                     }
+                     return value;
+                 }},
             { field:'author',title:'作者',width:80},
-             // { field:'tags',title:'标签',width:100},
-             { field:'viewNumber',title:'浏览量',sortable:true,width:30},
-             { field:'commentNumber',title:'评论数',sortable:true,width:30},
-        ]],
+             { field:'tags',title:'标签',width:100},
+             { field:'pageViews',title:'浏览量',sortable:true,width:30},
+             { field:'commentVolume',title:'评论数',sortable:true,width:30},
+        ]
+        ],
+    });
+
+    //显示角色下拉列表
+    $(function() {
+        $.ajax({
+            type: "post",
+            url: "/news_category/list2",//请求后台数据
+            dataType: "json",
+            success: function (json) {
+                categoryList = json;
+                $("#search-category").combobox({//往下拉框塞值
+                    data: json,
+                    valueField: "id",//value值
+                    textField: "name",//文本值
+                    panelHeight: "auto"
+                })
+            }
+        });
     });
 </script>
 <script>

@@ -43,4 +43,11 @@ public interface NewsService {
      * @return
      */
     int delete(Integer id);
+
+    /**
+     * 根据id查询新闻信息
+     * @param id
+     * @return
+     */
+    News findById(Integer id);
 }
