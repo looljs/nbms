@@ -17,8 +17,8 @@ public class News {
     private String photo;//新闻封面图片
     private String author;//作者
     private String content;//新闻内容
-    private Integer pageViews;//浏览量
-    private Integer commentVolume;//评论量
+    private Integer pageViews = 0;//浏览量
+    private Integer commentVolume = 0;//评论量
     private Date createTime;//发布时间
     private NewsCategory newsCategory;//分类实体
 }

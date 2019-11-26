@@ -38,7 +38,7 @@
                 <tr>
                     <td>摘要:</td>
                     <td>
-                        <textarea name="abstrs" rows="6" class="wu-textarea easyui-validatebox" style="width:260px" data-options="required:true,missingMessage:'请填写新闻摘要'"></textarea>
+                        <textarea name="summary" rows="6" class="wu-textarea easyui-validatebox" style="width:260px" data-options="required:true,missingMessage:'请填写新闻摘要'"></textarea>
                     </td>
                 </tr>
                 <tr>
@@ -160,6 +160,7 @@
 
     }
 
+    //表单数据提交
     function submitForm(){
         var validate = $("#add-form").form("validate");
         if(!validate){

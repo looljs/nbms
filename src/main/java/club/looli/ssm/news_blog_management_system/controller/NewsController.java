@@ -5,6 +5,7 @@ import club.looli.ssm.news_blog_management_system.entity.Menu;
 import club.looli.ssm.news_blog_management_system.entity.News;
 import club.looli.ssm.news_blog_management_system.page.Page;
 import club.looli.ssm.news_blog_management_system.service.NewsService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,10 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * 新闻管理控制器
@@ -103,8 +101,49 @@ public class NewsController {
             map.put("msg","数据绑定出错");
             return map;
         }
+        if(StringUtils.isEmpty(news.getAuthor())){
+            map.put("type","error");
+            map.put("msg","作者不能为空");
+            return map;
+        }
+        if(StringUtils.isEmpty(news.getContent())){
+            map.put("type","error");
+            map.put("msg","内容不能为空");
+            return map;
+        }
+        if(StringUtils.isEmpty(news.getPhoto())){
+            map.put("type","error");
+            map.put("msg","封面不能为空");
+            return map;
+        }
+        if(StringUtils.isEmpty(news.getSummary())){
+            map.put("type","error");
+            map.put("msg","摘要不能为空");
+            return map;
+        }
+        if(StringUtils.isEmpty(news.getTags())){
+            map.put("type","error");
+            map.put("msg","标签不能为空");
+            return map;
+        }
+        if(StringUtils.isEmpty(news.getTitle())){
+            map.put("type","error");
+            map.put("msg","标题不能为空");
+            return map;
+        }
+        if(StringUtils.isEmpty(news.getCategoryId().toString())){
+            map.put("type","error");
+            map.put("msg","分类不能为空");
+            return map;
+        }
+        news.setCreateTime(new Date());
         //添加
-        newsService.add(news);
+        int add = newsService.add(news);
+        if (add <= 0){
+            map.put("type","error");
+            map.put("msg","添加失败");
+            return map;
+        }
         map.put("type","success");
         map.put("msg","添加成功");
         return map;

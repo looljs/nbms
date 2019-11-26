@@ -67,7 +67,8 @@ public interface NewsDAO {
      * @param news
      * @return
      */
-    @Insert("insert into news (title,categoryId,tags,summary,photo,author,content,pageViews,commentVolume,createTime) values (#{title},#{categoryId},#{tags},#{summary},#{photo},#{author},#{content},#{pageViews},#{commentVolume},#{createTime})")
+//    @Insert("insert into news (title,categoryId,tags,summary,photo,author,content,pageViews,commentVolume,createTime) values (#{title},#{categoryId},#{tags},#{summary},#{photo},#{author},#{content},#{pageViews},#{commentVolume},#{createTime})")
+    @Insert("insert into news (title,categoryId,tags,summary,photo,author,content,createTime) values (#{title},#{categoryId},#{tags},#{summary},#{photo},#{author},#{content},#{createTime})")
     int add(News news);
 
     /**
