@@ -20,7 +20,7 @@ public interface NewsCategoryDAO {
      * @param map （分页信息，分类名）
      * @return
      */
-    @Select("select id,name,sort from news_category where name like #{name} limit #{start},#{size}")
+    @Select("select id,name,sort from news_category where name like #{name} order by sort asc limit #{start},#{size} ")
     List<NewsCategory> findAllBySearch(Map<String,Object> map);
 
     /**
@@ -62,4 +62,8 @@ public interface NewsCategoryDAO {
      */
     @Delete("delete from news_category where id = #{id}")
     int delete(Integer id);
+
+    @Select("select id,name,sort from news_category order by sort asc ")
+    List<NewsCategory> findList();
+
 }

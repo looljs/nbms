@@ -33,6 +33,7 @@ public class MenuController {
     private MenuService menuService;
 
 
+
     /**
      * 点击菜单管理
      * @param modelAndView
@@ -92,7 +93,7 @@ public class MenuController {
         }
         //判断菜单名是否可用
         Menu menuName = menuService.findMenuByMenuName(menu.getName());
-        if (menuName != null){
+        if (menuName != null ){
             map.put("type","error");
             map.put("msg","菜单名已经存在");
             return map;

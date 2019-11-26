@@ -11,12 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * 新闻分类控制器
@@ -25,8 +29,11 @@ import java.util.Map;
 @RequestMapping("/news_category")
 public class NewsCategoryController {
 
+
+
     @Autowired
     private NewsCategoryService categoryService;
+
 
     /**
      * 跳转分类管理
@@ -129,7 +136,7 @@ public class NewsCategoryController {
 
     /**
      * 删除新闻分类
-     * @param ids 要删除的新闻分类的id集合
+     * @param id 要删除的新闻分类的id集合
      * @return
      */
     @ResponseBody
@@ -146,4 +153,16 @@ public class NewsCategoryController {
         map.put("msg","删除成功");
         return map;
     }
+
+    /**
+     * 获取新闻分类列表
+     * @return
+     */
+    @RequestMapping(value = "categorys" ,method = RequestMethod.POST)
+    @ResponseBody
+    public List<NewsCategory> categorys(){
+        return categoryService.findList();
+    }
+
+
 }

@@ -48,4 +48,9 @@ public class NewsCategoryServiceImpl implements NewsCategoryService {
     public int delete(Integer id) {
         return categoryDAO.delete(id);
     }
+
+    @Override
+    public List<NewsCategory> findList() {
+        return categoryDAO.findList();
+    }
 }

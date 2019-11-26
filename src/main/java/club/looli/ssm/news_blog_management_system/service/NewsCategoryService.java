@@ -51,4 +51,10 @@ public interface NewsCategoryService {
      * @return
      */
     int delete(Integer id);
+
+    /**
+     * 获取新闻分类列表
+     * @return
+     */
+    List<NewsCategory> findList();
 }

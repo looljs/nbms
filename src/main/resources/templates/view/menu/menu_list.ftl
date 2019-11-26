@@ -14,12 +14,6 @@
         <div class="easyui-layout" data-options="fit:true">
             <!-- Begin of toolbar -->
             <div id="wu-toolbar">
-<!--                <div class="wu-toolbar-button">-->
-<!--                    <a href="#" class="easyui-linkbutton" iconCls="icon-add" onclick="openAdd()" plain="true">添加</a>-->
-<!--                    <a href="#" class="easyui-linkbutton" iconCls="icon-edit" onclick="openEdit()" plain="true">修改</a>-->
-<!--                    <a href="#" class="easyui-linkbutton" iconCls="icon-remove" onclick="remove()" plain="true">删除</a>-->
-<!--                    <a href="#" class="easyui-linkbutton" iconCls="icon-add" onclick="openButton()" plain="true">添加按钮</a>-->
-<!--                </div>-->
                 <#list menu as m>
                     <a href="#" class="easyui-linkbutton" iconCls="${m.icon}" onclick="${m.url}" plain="true">${m.name}</a>
                 </#list>

@@ -233,6 +233,7 @@
             idField:'id',
             treeField:'name',
             fit:true,
+            remoteSort: false,
             columns:[[
                 { field:'chk',checkbox:true},
                 { field:'name',title:'分类名',width:100,sortable:true,formatter:function(value,row,index){
