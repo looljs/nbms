@@ -39,9 +39,7 @@
                 <tr>
                     <td>摘要:</td>
                     <td>
-                        <textarea name="summary"  rows="6" class="wu-textarea easyui-validatebox" style="width:260px" data-options="required:true,missingMessage:'请填写新闻摘要'">
-                            ${news.summary }
-                        </textarea>
+                        <textarea name="summary"  rows="6" class="wu-textarea easyui-validatebox" style="width:260px" data-options="required:true,missingMessage:'请填写新闻摘要'">${news.summary}</textarea>
                     </td>
                 </tr>
                 <tr>
