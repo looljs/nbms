@@ -98,4 +98,7 @@ public interface NewsDAO {
 
     @Select("select id,title,categoryId,tags,summary,photo,author,content,pageViews,commentVolume,createTime from news where id = #{id}")
     News findById(Integer id);
+
+    @Update("update news set pageViews=#{pageViews} where id = #{id}")
+    void updatePageViews(Integer id);
 }

@@ -5666,5 +5666,5 @@
     ], function( Base ) {
         return Base;
     });
-    return require('static/third-party/webuploader/webuploader');
+    return require('webuploader');
 });

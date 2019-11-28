@@ -50,4 +50,10 @@ public interface NewsService {
      * @return
      */
     News findById(Integer id);
+
+    /**
+     * 更新新闻浏览量
+     * @param id
+     */
+    void updatePageViews(Integer id);
 }

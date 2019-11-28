@@ -4589,5 +4589,5 @@
     ], function( preset ) {
         return preset;
     });
-    return require('static/third-party/webuploader/webuploader');
+    return require('webuploader');
 });

@@ -26,7 +26,8 @@ public class MyWebMvcConfig implements WebMvcConfigurer {
         ).excludePathPatterns(
                 "/system/login",
                 "/system/get_cpacha",
-                "/static/**"
+                "/static/**",
+                "/News/resources/upload/**"
         );
     }
 

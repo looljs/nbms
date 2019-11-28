@@ -47,4 +47,9 @@ public class NewsServiceImpl implements NewsService {
     public News findById(Integer id) {
         return newsDAO.findById(id);
     }
+
+    @Override
+    public void updatePageViews(Integer id) {
+        newsDAO.updatePageViews(id);
+    }
 }

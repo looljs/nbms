@@ -10,7 +10,7 @@
     <script type="text/javascript" src="/easyui/easyui/1.3.4/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="/easyui/easyui/1.3.4/locale/easyui-lang-zh_CN.js"></script>
     <script src="/admin/ueditor/ueditor.config.js"></script>
-    <script src="/admin/ueditor/ueditor.all.min.js"></script>
+    <script src="/admin/ueditor/ueditor.all.js"></script>
     <script src="/admin/ueditor/lang/zh-cn/zh-cn.js"></script>
 </head>
 <body class="easyui-layout">
