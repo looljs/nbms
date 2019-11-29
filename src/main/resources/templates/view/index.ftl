@@ -33,7 +33,7 @@
         </div>
         <div class="wu-header-right">
             <p><strong class="easyui-tooltip" title="0条未读消息"></strong>${Session.username}，欢迎您！</p>
-            <p><a href="#">网站首页</a>|<a href="#">支持论坛</a>|<a href="#">帮助中心</a>|<a href="/system/logout">安全退出</a></p>
+            <p><a href="/home/index/index">网站首页</a>|<a href="#">支持论坛</a>|<a href="#">帮助中心</a>|<a href="/system/logout">安全退出</a></p>
         </div>
     </div>
     <!-- end of header -->

@@ -16,9 +16,12 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String requestURI = request.getRequestURI();
+//        if (requestURI.equals("/error")){
+//            return true;
+//        }
         String substring = requestURI.substring(1, 5);
         if (!substring.equals("home")){
-//根据是否有结果判断是否登录
+            //根据是否有结果判断是否登录
             String username = (String) request.getSession().getAttribute("username");
             //未登录
             if (StringUtils.isEmpty(username)){
@@ -37,7 +40,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             }
             //登录返回true
             return true;
-        }else {
+        } else {
             return true;
         }
 

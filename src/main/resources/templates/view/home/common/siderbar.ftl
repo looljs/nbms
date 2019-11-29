@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="widget widget_search">
-            <form class="navbar-form" action="" method="get">
+            <form class="navbar-form" action="/home/news/search_list" method="get">
                 <div class="input-group">
                     <input type="text" name="keyword" class="form-control" size="35" placeholder="请输入关键字" maxlength="15" autocomplete="off" value="">
                     <span class="input-group-btn">
@@ -71,35 +71,35 @@
         return y+'-'+add0(m)+'-'+add0(d)+' '+add0(h)+':'+add0(mm)+':'+add0(s);
     }
     $(document).ready(function(){
-        // $.ajax({
-        //     url:'../news/last_comment_list',
-        //     type:'post',
-        //     dataType:'json',
-        //     success:function(data){
-        //         if(data.type == 'success'){
-        //             var newsList = data.newsList;
-        //             var html = '';
-        //             for(var i=0;i<newsList.length;i++){
-        //                 var li = '<li><a title="'+newsList[i].title+'" href="../news/detail?id='+newsList[i].id+'" ><span class="thumbnail">';
-        //                 li += '<img class="thumb" data-original="/home/images/201610181739277776.jpg" src="'+newsList[i].photo+'" alt="'+newsList[i].id+'"  style="display: block;">';
-        //                 li += '</span><span class="text">'+newsList[i].title+'</span><span class="muted"><i class="glyphicon glyphicon-time"></i>';
-        //                 li += format(newsList[i].createTime) + '</span><span class="muted"><i class="glyphicon glyphicon-eye-open"></i>'+newsList[i].viewNumber+'</span></a></li>';
-        //                 html += li;
-        //             }
-        //             $("#last-comment-list").append(html);
-        //         }
-        //     }
-        // });
-        // $.ajax({
-        //     url:'../index/get_site_info',
-        //     type:'post',
-        //     dataType:'json',
-        //     success:function(data){
-        //         if(data.type == 'success'){
-        //             $("#total-article-span").text(data.totalArticle);
-        //             $("#sitetime").text(data.siteDays);
-        //         }
-        //     }
-        // });
+        $.ajax({
+            url:'/home/news/last_comment_list',
+            type:'post',
+            dataType:'json',
+            success:function(data){
+                if(data.type == 'success'){
+                    var newsList = data.newsList;
+                    var html = '';
+                    for(var i=0;i<newsList.length;i++){
+                        var li = '<li><a title="'+newsList[i].title+'" href="../news/detail?id='+newsList[i].id+'" ><span class="thumbnail">';
+                        li += '<img class="thumb" data-original="" src="'+newsList[i].photo+'" alt="'+newsList[i].id+'"  style="display: block;">';
+                        li += '</span><span class="text">'+newsList[i].title+'</span><span class="muted"><i class="glyphicon glyphicon-time"></i>';
+                        li += format(newsList[i].createTime) + '</span><span class="muted"><i class="glyphicon glyphicon-eye-open"></i>'+newsList[i].pageViews+'</span></a></li>';
+                        html += li;
+                    }
+                    $("#last-comment-list").append(html);
+                }
+            }
+        });
+        $.ajax({
+            url:'../index/get_site_info',
+            type:'post',
+            dataType:'json',
+            success:function(data){
+                if(data.type == 'success'){
+                    $("#total-article-span").text(data.totalArticle);
+                    $("#sitetime").text(data.siteDays);
+                }
+            }
+        });
     });
 </script>

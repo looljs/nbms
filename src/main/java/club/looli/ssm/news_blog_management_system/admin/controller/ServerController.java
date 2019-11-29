@@ -26,7 +26,7 @@ public class ServerController extends HttpServlet {
     public void config(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String action = request.getParameter("action");
         response.setContentType("application/json");
-        String rootPath = ClassUtils.getDefaultClassLoader().getResource("").getPath()+"static/admin/ueditor/jsp";
+        String rootPath = ClassUtils.getDefaultClassLoader().getResource("").getPath()+"static/admin/ueditor/jsp/";
         try {
             response.setCharacterEncoding("UTF-8");
             String exec = new ActionEnter(request, rootPath).exec();

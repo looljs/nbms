@@ -56,4 +56,10 @@ public interface NewsService {
      * @param id
      */
     void updatePageViews(Integer id);
+
+    List<News> findLastCommentNewsList(int i);
+
+    void updateCommentVolume(Integer newsId);
+
+    int getTotal();
 }

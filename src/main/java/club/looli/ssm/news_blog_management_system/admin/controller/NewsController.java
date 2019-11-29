@@ -237,7 +237,7 @@ public class NewsController {
                                           HttpServletRequest request){
         Map<String,Object> map = new HashMap<>();
         //images
-        String realPath = request.getSession().getServletContext().getRealPath("/")+"images"+sepa;
+        String realPath = request.getSession().getServletContext().getRealPath("/")+"home/images"+sepa;
         File folder = new File(realPath);
         //不是目录,创建成目录
         if (!folder.isDirectory()){
@@ -252,7 +252,7 @@ public class NewsController {
         try {
             multipartFile.transferTo(new File(folder,newName));
             map.put("type","success");
-            map.put("filepath",request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/images"+"/"+newName);
+            map.put("filepath",request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/home/images"+"/"+newName);
             map.put("msg","上传成功");
             return map;
         } catch (IOException e) {

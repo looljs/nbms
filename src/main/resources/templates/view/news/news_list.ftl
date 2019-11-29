@@ -113,7 +113,7 @@
             [
             { field:'chk',checkbox:true},
             { field:'title',title:'标题',width:300,formatter:function(value,row,index){
-                    return '<a href="../../news/detail?id='+row.id+'" target="_blank">' + value + '</a>';
+                    return '<a href="/home/news/detail?id='+row.id+'" target="_blank">' + value + '</a>';
                 }},
              { field:'categoryId',title:'分类',width:80,formatter:function(value,row,index){
                      for(var i=0;i<categoryList.length;i++){

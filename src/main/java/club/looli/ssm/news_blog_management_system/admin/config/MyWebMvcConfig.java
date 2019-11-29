@@ -27,6 +27,7 @@ public class MyWebMvcConfig implements WebMvcConfigurer {
                 "/system/login",
                 "/system/get_cpacha",
                 "/static/**",
+                "/images/**",
                 "/News/resources/upload/**"
         );
     }

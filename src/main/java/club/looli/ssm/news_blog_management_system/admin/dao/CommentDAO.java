@@ -31,6 +31,9 @@ public interface CommentDAO {
             "<if test='content != null'>",
             " and content like #{content} ",
             "</if>",
+            "<if test='newsId != null'>",
+            "newsId = #{newsId} ",
+            "</if>",
 //            "<if test='author != null'>",
 //            " and author like #{author} ",
 //            "</if>",
@@ -38,7 +41,7 @@ public interface CommentDAO {
 //            " and categoryId = #{categoryId} ",
 //            "</if>",
             "</where>",
-            " order by createTime desc limit #{start},#{size} ",
+            " order by createTime asc limit #{start},#{size} ",
             "</script>"
     })
     @Results(id="findAllBySearch",value = {

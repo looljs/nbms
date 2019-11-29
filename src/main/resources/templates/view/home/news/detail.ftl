@@ -8,9 +8,9 @@
 		<span class="item article-meta-time">
 	  		<time class="time" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="发表时间：2016-10-14"><i class="glyphicon glyphicon-time"></i> ${news.createTime?string('yyyy-MM-dd hh:mm:ss')}</time>
 	  	</span>
-                    <span class="item article-meta-source" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="来源：【猿来入此】">
+                        <span class="item article-meta-source" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="来源：【looli.club】">
 	  		<i class="glyphicon glyphicon-globe"></i>
-	  		猿来入此新闻博客
+	  		looli.club新闻博客
 	  	</span>
                     <span class="item article-meta-category" data-toggle="tooltip" data-placement="bottom" title="${news.title }" data-original-title="${news.title }">
 	  		<i class="glyphicon glyphicon-list"></i>
@@ -103,14 +103,14 @@
         $.ajax({
             url:'../news/get_comment_list',
             type:'post',
-            data:{rows:10,page:page++,newsId:'${news.id}'},
+            data:{rows:3,page:page++,newsId:'${news.id}'},
             dataType:'json',
             success:function(data){
                 if(data.type == 'success'){
                     var commentList = data.commentList;
                     var html = '';
                     for(var i=0;i<commentList.length;i++){
-                        var li = '<li class="comment-content"><span class="comment-f">#' + (commentList.length -i);
+                        var li = '<li class="comment-content"><span class="comment-f">#' + (i + 1);
                         li += '</span><div class="comment-main"><p><a class="address" href="#" rel="nofollow" target="_blank">'+commentList[i].nickname+'</a><span class="time">('+format(commentList[i].createTime)+')</span><br>'+commentList[i].content+'</p></div></li></ol>';
                         html += li;
                     }
@@ -126,11 +126,10 @@
             $.ajax({
                 url:'../news/get_comment_list',
                 type:'post',
-                data:{rows:10,page:page++,newsId:'${news.id}'},
+                data:{rows:3,page:page++,newsId:'${news.id}'},
                 dataType:'json',
                 success:function(data){
                     if(data.type == 'success'){
-
                         var commentList = data.commentList;
                         $("#load-more-comment-btn").text('查看更多评论!');
                         if(commentList.length == 0){

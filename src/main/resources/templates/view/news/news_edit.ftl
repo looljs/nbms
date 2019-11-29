@@ -84,7 +84,7 @@
 <div id="preview-dialog" class="easyui-dialog" data-options="closed:true,iconCls:'icon-save'" style="width:330px; padding:10px;">
     <table>
         <tr>
-            <td><img id="preview-photo" src="/images/user_photo.jpg" width="300px"></td>
+            <td><img id="preview-photo" src="${news.photo }" width="300px"></td>
         </tr>
     </table>
 </div>

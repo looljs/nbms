@@ -99,6 +99,27 @@ public interface NewsDAO {
     @Select("select id,title,categoryId,tags,summary,photo,author,content,pageViews,commentVolume,createTime from news where id = #{id}")
     News findById(Integer id);
 
-    @Update("update news set pageViews=#{pageViews} where id = #{id}")
+    @Update("update news set pageViews=pageViews+1 where id = #{id}")
     void updatePageViews(Integer id);
+
+    @Select("SELECT id,categoryId,title,summary,tags,photo,author,content,pageViews,commentVolume,createTime\n" +
+            "FROM news WHERE id in\n" +
+            "(\n" +
+            "SELECT id FROM (\n" +
+            "SELECT newsId AS id,\n" +
+            "\t\t\t max(id) as cid,\n" +
+            "\t\t\t max(content) as content,\n" +
+            "\t\t\t max(nickname) as nickname,\n" +
+            "\t\t\t max(createTime) as createTime\n" +
+            "\t\t\t FROM   `comment` GROUP BY newsId ORDER BY cid desc\n" +
+            ") as a\n" +
+            ") LIMIT 0,#{i}")
+    List<News> findLastCommentNewsList(int i);
+
+    @Update("update news set commentVolume=commentVolume+1 where id = #{id}")
+    void updateCommentVolume(Integer newsId);
+
+
+    @Select("select count(id) from news")
+    int getTotal();
 }

@@ -52,4 +52,19 @@ public class NewsServiceImpl implements NewsService {
     public void updatePageViews(Integer id) {
         newsDAO.updatePageViews(id);
     }
+
+    @Override
+    public List<News> findLastCommentNewsList(int i) {
+        return newsDAO.findLastCommentNewsList(i);
+    }
+
+    @Override
+    public void updateCommentVolume(Integer newsId) {
+        newsDAO.updateCommentVolume(newsId);
+    }
+
+    @Override
+    public int getTotal() {
+        return newsDAO.getTotal();
+    }
 }

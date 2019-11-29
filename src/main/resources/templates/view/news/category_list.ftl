@@ -237,7 +237,7 @@
             columns:[[
                 { field:'chk',checkbox:true},
                 { field:'name',title:'分类名',width:100,sortable:true,formatter:function(value,row,index){
-                        return '<a href="../../news/category_list?cid='+row.id+'" target="_blank">' + value + '</a>';
+                        return '<a href="/home/news/category_list?cid='+row.id+'" target="_blank">' + value + '</a>';
                     }},
                 { field:'sort',title:'排序',sortable:true,width:100},
             ]],

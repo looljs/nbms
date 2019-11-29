@@ -58,7 +58,7 @@
                 <h1 class="logo hvr-bounce-in"><a href="" title="looli.club新闻博客网站"><img src="/home/images/13.png" alt="looli.club新闻博客网站"></a></h1>
             </div>
             <div class="collapse navbar-collapse" id="header-navbar">
-                <form class="navbar-form visible-xs" action="" method="get">
+                <form class="navbar-form visible-xs" action="/home/news/search_list" method="get">
                     <div class="input-group">
                         <input type="text" name="keyword" class="form-control" placeholder="请输入关键字" maxlength="20" autocomplete="off" value="">
                         <span class="input-group-btn">
@@ -66,7 +66,7 @@
 		</span> </div>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a data-cont="looli.club新闻博客网站" title="looli.club新闻博客网站" href="/home/news/category_list?cid=-1">首页</a></li>
+                    <li><a data-cont="looli.club新闻博客网站" title="looli.club新闻博客网站" href="/home/index/index">首页</a></li>
                         <#list newsCategoryList as newsCategory>
                             <li><a data-cont="${newsCategory.name}" title="${newsCategory.name}" href="/home/news/category_list?cid=${newsCategory.id }">${newsCategory.name}</a></li>
                         </#list>
